@@ -39,9 +39,14 @@ sentences = ["ภาษาอังกฤษวันละคำ วันน�
 sound = AudioSegment.from_file(str(Path(current_path, "joyful-jingle.mp3")), format='mp3')
 
 for i, sen in enumerate(sentences):
-	pronunThai(sen)
+	
 	
 	filename = "demo{}.mp3".format(i)
+
+	pronunThai(sen, filename)
+
+
+
 	sound = AudioSegment.from_file(str(Path(current_path, filename)), format='mp3')
 	
 	sound += sound
