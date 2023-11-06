@@ -2,7 +2,9 @@ from gtts import gTTS
 from googletrans import Translator
 from pydub import AudioSegment
 from tqdm import tqdm
+from pathlib import Path
 
+current_path = str(Path(__file__).parent.resolve())
 
 def translate(word):
 	trans = Translator()
@@ -41,8 +43,8 @@ pronunEng(sentences[1])
 
 
 
-sound1 = AudioSegment.from_file(r'C:\Users\saich\Documents\EngPrac\engDemo.mp3', format='mp3')
-sound2 = AudioSegment.from_file(r'C:\Users\saich\Documents\EngPrac\thaiDemo.mp3', format='mp3')
+sound1 = AudioSegment.from_file(Path(current_path, engDemo.mp3), format='mp3')
+sound2 = AudioSegment.from_file(Path(current_path, thaiDemo.mp3), format='mp3')
 
 
 combined = sound1 + sound2
