@@ -34,20 +34,20 @@ translatedWord = translate(txtWord)
 
 
 
-sentences = ["ภาษาอังกฤษวันละคำ วันนี้ขอเสนอคำว่า ", txtWord]
+sentences = ["ภาษาอังกฤษวันละคำ วันนี้ขอเสนอคำว่า ", txtWord, txtWord, "สามารถสะกดได้ดังนี้"]
+
+sound = AudioSegment.from_file(str(Path(current_path, "joyful-jingle.mp3")), format='mp3')
+
+for i, sen in enumerate(sentences):
+	pronunThai(sen)
+	
+	filename = "demo.mp3{}".format(i)
+	sound = AudioSegment.from_file(str(Path(current_path, filename)), format='mp3')
+	
+	sound += sound
 
 
-pronunThai(sentences[0])
-pronunEng(sentences[1])
 
 
-
-
-sound1 = AudioSegment.from_file(Path(current_path, engDemo.mp3), format='mp3')
-sound2 = AudioSegment.from_file(Path(current_path, thaiDemo.mp3), format='mp3')
-
-
-combined = sound1 + sound2
-
-combined.export(r'C:\Users\saich\Documents\EngPrac\exported.mp3', format='mp3')
+sound.export(r'C:\Users\saich\Documents\EngPrac\exported.mp3', format='mp3')
 
