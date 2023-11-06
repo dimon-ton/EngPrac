@@ -13,16 +13,16 @@ def translate(word):
 	return meaning
 
 
-def pronunEng(word):
+def pronunEng(word, filename):
 	tss = gTTS(text=word, lang='en')
 	
-	tss.save('engDemo.mp3')
+	tss.save('{}.mp3'.format(filename))
 
 
-def pronunThai(word):
+def pronunThai(word, filename):
 	tss = gTTS(text=word, lang='th')
 	
-	tss.save('thaiDemo.mp3')
+	tss.save('{}.mp3'.format(filename))
 
 
 
@@ -41,7 +41,7 @@ sound = AudioSegment.from_file(str(Path(current_path, "joyful-jingle.mp3")), for
 for i, sen in enumerate(sentences):
 	pronunThai(sen)
 	
-	filename = "demo.mp3{}".format(i)
+	filename = "demo{}.mp3".format(i)
 	sound = AudioSegment.from_file(str(Path(current_path, filename)), format='mp3')
 	
 	sound += sound
@@ -49,5 +49,5 @@ for i, sen in enumerate(sentences):
 
 
 
-sound.export(r'C:\Users\saich\Documents\EngPrac\exported.mp3', format='mp3')
+sound.export(str(Path(current_path, "exported.mp3")), format='mp3')
 
